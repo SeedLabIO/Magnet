@@ -32,9 +32,9 @@ public final class HotKey: Equatable {
 // MARK: - Invoke
 public extension HotKey {
     public func invoke() {
-        if let target = target as? NSObject, selector = action {
-            if target.respondsToSelector(selector) {
-                target.performSelector(selector, withObject: self)
+        if let target = target as? NSObject, let selector = action {
+            if target.responds(to: selector) {
+                target.perform(selector, with: self)
             }
         }
     }
